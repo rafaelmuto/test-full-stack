@@ -5,7 +5,21 @@ switch ($_REQUEST['action']) {
     include "classes/usuario.class.php";
     unset($_POST['action']);
     $return = (new usuario)->add($_POST);
-    // code...
+    var_dump($return);
+    break;
+
+  case 'cad_catProduto':
+    include "classes/categorias.class.php";
+    unset($_POST['action']);
+    $return = (new catProduto)->add($_POST);
+    var_dump($return);
+    break;
+
+  case 'cad_catPublicacao':
+    include "classes/categorias.class.php";
+    unset($_POST['action']);
+    $return = (new catPublicacao)->add($_POST);
+    var_dump($return);
     break;
 
   default:

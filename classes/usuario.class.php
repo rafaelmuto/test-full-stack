@@ -5,7 +5,7 @@ include_once "db.class.php";
  */
 class usuario extends Db
 {
-  protected $pdo;
+  public $pdo;
 
   public function listar(){
     return $this->pdo->query('SELECT * FROM usuarios')->fetchall(PDO::FETCH_ASSOC);
@@ -15,7 +15,7 @@ class usuario extends Db
     if($post['senha'] != $post['conf_senha']){
       return ["error"=>TRUE, "msg"=>'senhas_nao_conferem'];
     }
-    if(in_array($post['nome'],$this->pdo->query('SELECT nome FROM usuarios')->fetchall(PDO::FETCH_ASSOC))){
+    if(in_array($post['nome'],$this->pdo->query('SELECT nome FROM usuarios')->fetchAll(PDO::FETCH_COLUMN))){
       return ["error"=>TRUE, "msg"=>'nome_ja_cadastrado'];
     }
     else{

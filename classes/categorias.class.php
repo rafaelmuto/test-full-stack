@@ -13,7 +13,7 @@ class catProduto extends db
   }
 
   public function add($post){
-    if(in_array($post['cat_nome'],$this->pdo->query('SELECT cat_nome FROM cat_produto')->fetchall(PDO::FETCH_ASSOC))){
+    if(in_array($post['cat_nome'],$this->pdo->query('SELECT cat_nome FROM cat_produto')->fetchall(PDO::FETCH_COLUMN))){
       return ["error"=>TRUE, "msg"=>'categoria_ja_cadastrado'];
     }
     $query = $this->pdo->prepare('INSERT INTO cat_produto(`cat_nome`) VALUES(:cat_nome)');
@@ -34,7 +34,7 @@ class catPublicacao extends db
   }
 
   public function add($post){
-    if(in_array($post['cat_nome'],$this->pdo->query('SELECT cat_nome FROM cat_publicacao')->fetchall(PDO::FETCH_ASSOC))){
+    if(in_array($post['cat_nome'],$this->pdo->query('SELECT cat_nome FROM cat_publicacao')->fetchall(PDO::FETCH_COLUMN))){
       return ["error"=>TRUE, "msg"=>'categoria_ja_cadastrado'];
     }
     $query = $this->pdo->prepare('INSERT INTO cat_publicacao(`cat_nome`) VALUES(:cat_nome)');

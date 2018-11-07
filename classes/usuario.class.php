@@ -15,6 +15,9 @@ class usuario extends Db
     if($post['senha'] != $post['conf_senha']){
       return ["error"=>TRUE, "msg"=>'senhas_nao_conferem'];
     }
+    if(in_array($post['nome'],$this->pdo->query('SELECT nome FROM usuarios')->fetchall(PDO::FETCH_ASSOC))){
+      return ["error"=>TRUE, "msg"=>'nome_ja_cadastrado'];
+    }
     else{
       unset($post['conf_senha']);
       $post['senha'] = password_hash($post['senha'], PASSWORD_DEFAULT);

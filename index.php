@@ -15,5 +15,13 @@
       <a href="Read.php">Update</a>
       <a href="Read.php">Delete</a>
     </header>
+    <div class="inst">
+      <h2>Instruções</h2>
+      <ol>
+        <li>Rodar o arquivo <a href="mysql/crudDB.sql">crudDB.sql </a>para criar o banco de dados.</li>
+        <li>Os links a cima levam as funções do CRUD.</li>
+        <li>Como o banco de dados esta vazio, você deverá criar uma entrada na tabela de usuarios, categoria de produto e categoria de publicação.</li>
+      </ol>
+    </div>
   </body>
 </html>

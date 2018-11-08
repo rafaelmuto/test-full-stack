@@ -22,6 +22,11 @@ header>* {
   align-self: center;
 }
 
+.inst {
+  width: 50%;
+  margin: 0 auto;
+}
+
 .main_container {
   width: 100%;
   display: grid;

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,400" rel="stylesheet">
     <link rel="stylesheet" href="css/master.css">
-    <title>Teste de Recrutamento Full Stack PHP - Cadastro de Usuario</title>
+    <title>CRUD</title>
   </head>
   <body>
 
@@ -22,7 +22,7 @@
           E-mail: <input type="text" name="email" value="">
           Senha: <input type="password" name="senha" value="">
           Conf. Senha: <input type="password" name="conf_senha" value="">
-          <button type="submit" name="action" value="cadastro">Cadastrar!</button>
+          <button class="button" type="submit" name="action" value="cad_usuario">Cadastrar!</button>
         </form>
       </div>
 
@@ -30,7 +30,7 @@
         <h2>Categoria de Produtos</h2>
         <form action="switch.php" method="post">
           Nova Categoria de Produto: <input type="text" name="cat_nome" value="">
-          <button type="submit" name="action" value="cad_catProduto">Cadastrar!</button>
+          <button class="button" type="submit" name="action" value="cad_catProduto">Cadastrar!</button>
         </form>
       </div>
 
@@ -38,7 +38,32 @@
         <h2>Categoria de Publicacao</h2>
         <form action="switch.php" method="post">
           Nova Categoria de Publicacao: <input type="text" name="cat_nome" value="">
-          <button type="submit" name="action" value="cad_catPublicacao">Cadastrar!</button>
+          <button class="button" type="submit" name="action" value="cad_catPublicacao">Cadastrar!</button>
+        </form>
+      </div>
+
+      <div class="form_produto">
+        <form action="switch.php" method="post" enctype="multipart/form-data">
+          <h2>Produto</h2>
+          fk_usuario_id: <input type="text" name="fk_usuario_id" value="">
+          Titulo: <input type="text" name="titulo" value="">
+          Imagem: <input type="file" name="imagem" value="">
+          Valor: <input type="text" name="valor" value="">
+          categoria: <input type="text" name="categoria" value="">
+          <button class="button" type="submit" name="action" value="cad_produto">Cadastrar!</button>
+        </form>
+      </div>
+
+      <div class="form_publicacao">
+        <form  action="switch.php" method="post">
+          <h2>Publicacao</h2>
+          fk_usuario_id: <input type="text" name="fk_usuario_id" value="">
+          Titulo: <input type="text" name="titulo" value="">
+          Descricao: <input type="text" name="Descricao" value="">
+          Conteudo: <textarea name="conteudo" rows="8"></textarea>
+          Imagem: <input type="file" name="Imagem" value="">
+          categoria: <input type="text" name="categoria" value="">
+          <button class="button" type="submit" name="action" value="cad_publicacao">Cadastrar!</button>
         </form>
       </div>
 

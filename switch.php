@@ -1,11 +1,22 @@
 <?php
 
 switch ($_REQUEST['action']) {
-  case 'cadastro':
+  case 'cad_usuario':
     include "classes/usuario.class.php";
     unset($_POST['action']);
     $return = (new usuario)->add($_POST);
     var_dump($return);
+    break;
+
+  case 'cad_produto':
+    include "classes/produto.class.php";
+    unset($_POST['action']);
+    $return = (new produto)->add($_POST);
+    var_dump($return);
+    break;
+
+  case 'cad_publicacao':
+    // code...
     break;
 
   case 'cad_catProduto':

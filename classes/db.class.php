@@ -28,7 +28,7 @@ class Db{
     }
   }
 
-  public function query($string){
+  public function runQuery($string){
     $this->pdo->query($string);
   }
 }

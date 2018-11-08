@@ -9,7 +9,11 @@
   </head>
   <body>
     <header>
-      <h1>crudDB</h1>
+      <h1>CRUD</h1>
+      <a href="Create.php">Create</a>
+      <a href="Read.php">Read</a>
+      <a href="Read.php">Update</a>
+      <a href="Read.php">Delete</a>
     </header>
   </body>
 </html>

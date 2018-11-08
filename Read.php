@@ -10,7 +10,8 @@
   <body>
 
     <header>
-      <h1>CRUD - Read</h1>
+      <h1>CRUD</h1>
+      <h1>Read</h1>
       <form action="Read.php" method="get" style="align-self: center;">
         <select name="show">
           <option value="usuarios">usuarios</option>
@@ -21,6 +22,7 @@
         </select>
         <button type="submit">Buscar</button>
       </form>
+      <a href="index.php">Voltar</a>
     </header>
 
     <?php

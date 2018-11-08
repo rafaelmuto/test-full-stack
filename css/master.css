@@ -46,3 +46,25 @@ textarea {
   color: white;
   text-align: center;
 }
+
+table, th, td {
+  border: 0;
+}
+
+th, td {
+  padding: 5px;
+  text-align: center;
+}
+
+th {
+  background-color: #555;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #ccc;
+}
+
+tr:nth-child(odd) {
+  background-color: #eee;
+}

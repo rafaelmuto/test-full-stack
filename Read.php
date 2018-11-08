@@ -34,25 +34,21 @@
           case 'produtos':
             include "classes/produto.class.php";
             $array = (new produto)->listar();
-            // code...
             break;
 
           case 'publicacoes':
             include "classes/publicacao.class.php";
             $array = (new publicacao)->listar();
-            // code...
             break;
 
           case 'cat_produto':
             include "classes/categorias.class.php";
             $array = (new catProduto)->listar();
-            // code...
             break;
 
           case 'cat_publicacao':
             include "classes/categorias.class.php";
             $array = (new catPublicacao)->listar();
-            // code...
             break;
         }
       }
@@ -76,8 +72,8 @@
             foreach ($item as $value) {
               echo "<td>".$value."</td>";
             }
-            echo "<td>";
-            echo '<a href="switch.php?action=delete&class='.$_GET["show"].'&column='.array_keys($array[0])[0].'&id='.$item[array_keys($array[0])[0]].'">deletar</a>';
+            echo '<td><a href="switch.php?action=delete&class='.$_GET["show"].'&column='.array_keys($array[0])[0].'&id='.$item[array_keys($array[0])[0]].'">deletar</a></td>';
+            echo '<td><a href="switch.php?action=update&class='.$_GET["show"].'&id='.$item[array_keys($array[0])[0]].'">update</a></td>';
             echo "</tr>";
           }
         ?>

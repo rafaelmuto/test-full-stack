@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,400" rel="stylesheet">
     <link rel="stylesheet" href="css/master.css">
-    <title>CRUD</title>
+    <title>CRUD - Create</title>
   </head>
   <body>
 

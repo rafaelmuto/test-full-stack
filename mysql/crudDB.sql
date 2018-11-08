@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `crudDB`.`publicacoes` (
   `fk_usuario_id` INT(11) NOT NULL,
   `titulo` VARCHAR(45) NOT NULL,
   `descricao` VARCHAR(45) NOT NULL,
-  `conteudo` VARCHAR(512) NOT NULL,
+  `conteudo` TEXT(65535) NOT NULL,
   `imagem` VARCHAR(45) NOT NULL,
   `categoria` INT(11) NOT NULL,
   `data` DATETIME DEFAULT CURRENT_TIMESTAMP,

@@ -40,8 +40,13 @@ switch ($_REQUEST['action']) {
     var_dump($return);
     break;
 
+  case 'read':
+    unset($_POST['action']);
+    header("Location:Read.php?show=".$_POST['option']);
+    break;
+
   default:
-      header("Location:main.php?msg=switch_error");
+    header("Location:main.php?msg=switch_error");
     break;
 }
 

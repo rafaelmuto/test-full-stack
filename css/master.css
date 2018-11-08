@@ -11,6 +11,8 @@ header {
   height: 2.5em;
   background-color: black;
   color: white;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
 
 .main_container {

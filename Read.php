@@ -16,8 +16,8 @@
           <option value="usuarios">usuarios</option>
           <option value="produtos">produtos</option>
           <option value="publicacoes">publicacoes</option>
-          <option value="catProdutos">categoria de produtos</option>
-          <option value="catPublicacoes">categoria de publicacoes</option>
+          <option value="cat_produto">categoria de produtos</option>
+          <option value="cat_publicacao">categoria de publicacoes</option>
         </select>
         <button type="submit">Buscar</button>
       </form>
@@ -43,20 +43,18 @@
             // code...
             break;
 
-          case 'catProdutos':
+          case 'cat_produto':
             include "classes/categorias.class.php";
             $array = (new catProduto)->listar();
             // code...
             break;
 
-          case 'catPublicacoes':
+          case 'cat_publicacao':
             include "classes/categorias.class.php";
             $array = (new catPublicacao)->listar();
             // code...
             break;
         }
-        // echo "<pre>";
-        // var_dump($array);
       }
       else{
         echo("<h2>escolha a tabela a ser mostrada</h2>");
@@ -78,11 +76,14 @@
             foreach ($item as $value) {
               echo "<td>".$value."</td>";
             }
+            echo "<td>";
+            echo '<a href="switch.php?action=delete&class='.$_GET["show"].'&column='.array_keys($array[0])[0].'&id='.$item[array_keys($array[0])[0]].'">deletar</a>';
             echo "</tr>";
           }
         ?>
      </table>
      <? endif; ?>
+
 
 
   </body>

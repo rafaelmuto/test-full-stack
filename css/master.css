@@ -68,3 +68,8 @@ tr:nth-child(even) {
 tr:nth-child(odd) {
   background-color: #eee;
 }
+
+td>a {
+  color: black;
+  text-decoration: none;
+}

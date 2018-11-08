@@ -27,5 +27,9 @@ class Db{
       echo  "Connection Failed: " . $e->getMessage();
     }
   }
+
+  public function query($string){
+    $this->pdo->query($string);
+  }
 }
 ?>

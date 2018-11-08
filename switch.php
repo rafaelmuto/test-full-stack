@@ -40,6 +40,15 @@ switch ($_REQUEST['action']) {
     var_dump($return);
     break;
 
+  case 'delete':
+    include "classes/db.class.php";
+    unset($_GET['action']);
+    $query = 'DELETE FROM '.$_GET['class'].' WHERE '.$_GET['column'].'='.$_GET['id'];
+    (new db)->query($query);
+    header('Location:Read.php?show='.$_GET['class']);
+    // code...
+    break;
+
   default:
     header("Location:main.php?msg=switch_error");
     break;

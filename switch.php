@@ -16,6 +16,13 @@ switch ($_REQUEST['action']) {
     break;
 
   case 'cad_publicacao':
+    include "classes/publicacao.class.php";
+    unset($_POST['action']);
+    $return = (new publicacao)->add($_POST);
+    var_dump($return);
+    break;
+
+  case 'cad_publicacao':
     // code...
     break;
 

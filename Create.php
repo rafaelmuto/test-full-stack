@@ -55,13 +55,13 @@
       </div>
 
       <div class="form_publicacao">
-        <form  action="switch.php" method="post">
+        <form  action="switch.php" method="post" enctype="multipart/form-data">
           <h2>Publicacao</h2>
           fk_usuario_id: <input type="text" name="fk_usuario_id" value="">
           Titulo: <input type="text" name="titulo" value="">
-          Descricao: <input type="text" name="Descricao" value="">
+          Descricao: <input type="text" name="descricao" value="">
           Conteudo: <textarea name="conteudo" rows="8"></textarea>
-          Imagem: <input type="file" name="Imagem" value="">
+          Imagem: <input type="file" name="imagem" value="">
           categoria: <input type="text" name="categoria" value="">
           <button class="button" type="submit" name="action" value="cad_publicacao">Cadastrar!</button>
         </form>

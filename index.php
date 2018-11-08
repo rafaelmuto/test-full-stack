@@ -21,6 +21,7 @@
         <li>Rodar o arquivo <a href="mysql/crudDB.sql">crudDB.sql </a>para criar o banco de dados.</li>
         <li>Os links a cima levam as funções do CRUD.</li>
         <li>Como o banco de dados esta vazio, você deverá criar uma entrada na tabela de usuarios, categoria de produto e categoria de publicação.</li>
+        <li>Lembre-se que as categorias e o fk_usuario_id são chaves extrangeiras portanto devem ser preenchidas com valores validos das outras tabelas</li>
       </ol>
     </div>
   </body>

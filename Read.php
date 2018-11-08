@@ -71,8 +71,14 @@
        <?php
           foreach ($array as $item) {
             echo "<tr>";
-            foreach ($item as $value) {
-              echo "<td>".$value."</td>";
+            foreach ($item as $key => $value) {
+              if($key=='imagem'){
+                echo "<td><a href='".$value."'><img class='thumb' src='".$value."'></a></td>";
+              }
+              else{
+                echo "<td>".$value."</td>";
+              }
+              
             }
             echo '<td><a href="switch.php?action=delete&class='.$_GET["show"].'&column='.array_keys($array[0])[0].'&id='.$item[array_keys($array[0])[0]].'">deletar</a></td>';
             echo '<td><a href="switch.php?action=update&class='.$_GET["show"].'&id='.$item[array_keys($array[0])[0]].'">update</a></td>';
@@ -81,8 +87,6 @@
         ?>
      </table>
      <? endif; ?>
-
-
 
   </body>
 </html>

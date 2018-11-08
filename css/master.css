@@ -59,6 +59,11 @@ textarea {
   text-align: center;
 }
 
+.thumb {
+  max-width: 200px;
+  max-height: 200px;
+}
+
 table, th, td {
   border: 0;
 }

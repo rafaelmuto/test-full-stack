@@ -19,7 +19,7 @@
         <h2>Usuarios</h2>
         <form action="switch.php" method="post">
           Nome: <input type="text" name="nome" value="">
-          E-mail: <input type="text" name="email" value="">
+          E-mail: <input type="email" name="email" value="">
           Senha: <input type="password" name="senha" value="">
           Conf. Senha: <input type="password" name="conf_senha" value="">
           <button class="button" type="submit" name="action" value="cad_usuario">Cadastrar!</button>

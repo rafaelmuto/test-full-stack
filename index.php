@@ -12,16 +12,17 @@
       <h1>CRUD</h1>
       <a href="Create.php">Create</a>
       <a href="Read.php">Read</a>
-      <a href="Read.php">Update</a>
-      <a href="Read.php">Delete</a>
+      <a href="Update.php">Update</a>
+      <a href="Delete.php">Delete</a>
     </header>
     <div class="inst">
       <h2>Instruções</h2>
       <ol>
         <li>Rodar o arquivo <a href="mysql/crudDB.sql">crudDB.sql </a>para criar o banco de dados.</li>
         <li>Os links a cima levam as funções do CRUD.</li>
-        <li>Como o banco de dados esta vazio, você deverá criar uma entrada na tabela de usuarios, categoria de produto e categoria de publicação.</li>
-        <li>Lembre-se que as categorias e o fk_usuario_id são chaves extrangeiras portanto devem ser preenchidas com valores validos das outras tabelas</li>
+        <li>Como o banco de dados começa vazio, você deverá criar pelo menos uma entrada em cada uma das tabelas.</li>
+        <li>Lembre-se que as categorias e o usuario são chaves estrangeiras para outras tabalas, portando devem ser conter entradas para que as outras tabelas funcionem.</li>
+        <li>Por conta das atribuições de chaves estrangeiras você devera deletar todas as mensões da chave antes de deletar o item chave estrangeira.</li>
       </ol>
     </div>
   </body>

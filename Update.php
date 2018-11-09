@@ -11,8 +11,8 @@
 
     <header>
       <h1>CRUD</h1>
-      <h1>Read</h1>
-      <form action="Read.php" method="get" style="align-self: center;">
+      <h1>Update</h1>
+      <form action="Update.php" method="get" style="align-self: center;">
         <select name="show">
           <option value="usuarios">usuarios</option>
           <option value="produtos">produtos</option>
@@ -80,6 +80,8 @@
               }
 
             }
+            echo '<td><a href="switch.php?action=update&class='.$_GET["show"].'&id='.$item[array_keys($array[0])[0]].'">update</a></td>';
+            echo "</tr>";
           }
         ?>
      </table>

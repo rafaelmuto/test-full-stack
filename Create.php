@@ -47,11 +47,29 @@
       <div class="form_produto">
         <form action="switch.php?action=cadastro" method="post" enctype="multipart/form-data">
           <h2>Produto</h2>
-          fk_usuario_id: <input type="text" name="fk_usuario_id" value="">
+          Usuario:
+          <select class="select_longo" name="fk_usuario_id">
+            <?php
+              include "classes/usuario.class.php";
+              $usuarios = (new usuario)->listar();
+              foreach ($usuarios as $item) {
+                echo '<option value="'.$item['usuario_id'].'">'.$item['nome'].'</option>';
+              }
+            ?>
+          </select>
           Titulo: <input type="text" name="titulo" value="">
           Imagem: <input type="file" name="imagem" value="">
           Valor: <input type="text" name="valor" value="">
-          categoria: <input type="text" name="categoria" value="">
+          Categoria:
+          <select class="select_longo" name="categoria">
+            <?php
+              include "classes/categorias.class.php";
+              $options = (new catProduto)->listar();
+              foreach ($options as $item) {
+                echo '<option value="'.$item['cat_produto_id'].'">'.$item['cat_nome'].'</option>';
+              }
+             ?>
+          </select>
           <button class="button" type="submit" name="class" value="produtos">Cadastrar!</button>
         </form>
       </div>
@@ -59,12 +77,27 @@
       <div class="form_publicacao">
         <form  action="switch.php?action=cadastro" method="post" enctype="multipart/form-data">
           <h2>Publicacao</h2>
-          fk_usuario_id: <input type="text" name="fk_usuario_id" value="">
+          Usuario:
+          <select class="select_longo" name="fk_usuario_id">
+            <?php
+              foreach ($usuarios as $item) {
+                echo '<option value="'.$item['usuario_id'].'">'.$item['nome'].'</option>';
+              }
+            ?>
+          </select>
           Titulo: <input type="text" name="titulo" value="">
           Descricao: <input type="text" name="descricao" value="">
           Conteudo: <textarea name="conteudo" rows="8"></textarea>
           Imagem: <input type="file" name="imagem" value="">
-          categoria: <input type="text" name="categoria" value="">
+          Categoria:
+          <select class="select_longo" name="categoria">
+            <?php
+              $options = (new catPublicacao)->listar();
+              foreach ($options as $item) {
+                echo '<option value="'.$item['cat_publicacao_id'].'">'.$item['cat_nome'].'</option>';
+              }
+             ?>
+          </select>
           <button class="button" type="submit" name="class" value="publicacoes">Cadastrar!</button>
         </form>
       </div>

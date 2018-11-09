@@ -52,7 +52,7 @@ switch ($_REQUEST['action']) {
     unset($_GET['action']);
     $query = 'DELETE FROM '.$_GET['class'].' WHERE '.$_GET['column'].'='.$_GET['id'];
     (new db)->runQuery($query);
-    header('Location:Read.php?show='.$_GET['class']);
+    header('Location:Delete.php?show='.$_GET['class']);
     break;
 
   default:

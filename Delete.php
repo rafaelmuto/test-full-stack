@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,400" rel="stylesheet">
     <link rel="stylesheet" href="css/master.css">
-    <title>CRUD - Read</title>
+    <title>CRUD - Delete</title>
   </head>
   <body>
 
     <header>
       <h1>CRUD</h1>
-      <h1>Read</h1>
-      <form action="Read.php" method="get" style="align-self: center;">
+      <h1>Delete</h1>
+      <form action="Delete.php" method="get" style="align-self: center;">
         <select name="show">
           <option value="usuarios">usuarios</option>
           <option value="produtos">produtos</option>
@@ -80,6 +80,8 @@
               }
 
             }
+            echo '<td><a href="switch.php?action=delete&class='.$_GET["show"].'&column='.array_keys($array[0])[0].'&id='.$item[array_keys($array[0])[0]].'">deletar</a></td>';
+            echo "</tr>";
           }
         ?>
      </table>

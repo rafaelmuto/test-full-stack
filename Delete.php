@@ -25,6 +25,7 @@
       <a href="index.php">Voltar</a>
     </header>
 
+    <div class="inst">
     <?php
       if(isset($_GET['show'])){
         switch ($_GET['show']) {
@@ -85,7 +86,7 @@
           }
         ?>
      </table>
-     <? endif; ?>
-
+     <? endif; ?>   
+   </div>
   </body>
 </html>

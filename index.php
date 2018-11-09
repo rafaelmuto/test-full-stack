@@ -18,11 +18,11 @@
     <div class="inst">
       <h2>Instruções</h2>
       <ol>
-        <li>Rodar o arquivo <a href="mysql/crudDB.sql">crudDB.sql </a>para criar o banco de dados.</li>
-        <li>Os links a cima levam as funções do CRUD.</li>
+        <li>Rodar o arquivo <a href="mysql/crudDB.sql">crudDB.sql</a> para criar o banco de dados.</li>
+        <li>Os links a cima levam às funções do CRUD.</li>
         <li>Como o banco de dados começa vazio, você deverá criar pelo menos uma entrada em cada uma das tabelas.</li>
-        <li>Lembre-se que as categorias e o usuario são chaves estrangeiras para outras tabalas, portando devem ser conter entradas para que as outras tabelas funcionem.</li>
-        <li>Por conta das atribuições de chaves estrangeiras você devera deletar todas as mensões da chave antes de deletar o item chave estrangeira.</li>
+        <li>Lembre-se que as categorias e o usuario são chaves estrangeiras para outras tabelas, portando devem conter entradas para que as outras tabelas funcionem.</li>
+        <li>Por conta das atribuições de chaves estrangeiras você devera deletar todas as mensões da chave antes de deletar a chave estrangeira.</li>
       </ol>
     </div>
   </body>

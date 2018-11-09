@@ -25,8 +25,9 @@
       <a href="index.php">Voltar</a>
     </header>
 
+    <div class="inst">
     <?php
-      if(isset($_GET['show'])){
+      if(isset($_GET['show']) && !isset($_GET['form'])){
         switch ($_GET['show']) {
           case 'usuarios':
             include "classes/usuario.class.php";
@@ -55,7 +56,9 @@
         }
       }
       else{
-        echo("<h2>escolha a tabela a ser mostrada</h2>");
+        if(!isset($_GET['form'])){
+          echo("<h2>escolha a tabela a ser mostrada</h2>");
+        }
       }
      ?>
 
@@ -80,12 +83,15 @@
               }
 
             }
-            echo '<td><a href="switch.php?action=update&class='.$_GET["show"].'&id='.$item[array_keys($array[0])[0]].'">update</a></td>';
+            echo '<td><a href="Update.php?form=TRUE&class='.$_GET["show"].'&column='.array_keys($array[0])[0].'&id='.$item[array_keys($array[0])[0]].'">update</a></td>';
             echo "</tr>";
           }
         ?>
      </table>
      <? endif; ?>
-
+     <? if(isset($_GET['form'])): ?>
+        <h1>AGUI VAI O FORM</h1>
+     <? endif; ?>
+   </div>
   </body>
 </html>

@@ -25,7 +25,7 @@
       <a href="index.php">Voltar</a>
     </header>
 
-    <div class="inst">
+
     <?php
       if(isset($_GET['show'])){
         switch ($_GET['show']) {
@@ -56,7 +56,7 @@
         }
       }
       else{
-        echo("<h2>escolha a tabela a ser mostrada</h2>");
+        echo "<div class='inst'><h2>escolha a tabela a ser mostrada</h2></div>";
       }
      ?>
 
@@ -85,6 +85,5 @@
         ?>
      </table>
      <? endif; ?>
-     </div>
   </body>
 </html>

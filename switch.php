@@ -1,55 +1,79 @@
 <?php
 
-switch ($_REQUEST['action']) {
+switch ($_GET['action']) {
 
   case 'cadastro':
     unset($_GET['action']);
-    switch ($_POST['class']) {
+    switch ($_GET['tabela']) {
 
       case 'usuarios':
-        unset($_POST['class']);
         include "classes/usuario.class.php";
         $return = (new usuario)->add($_POST);
         if(!$return['error']) header('Location:Read.php?show=usuarios');
         break;
 
       case 'produtos':
-        unset($_POST['class']);
         include "classes/produto.class.php";
         $return = (new produto)->add($_POST);
         if(!$return['error']) header('Location:Read.php?show=produtos');
         break;
 
       case 'publicacoes':
-        unset($_POST['class']);
         include "classes/publicacao.class.php";
         $return = (new publicacao)->add($_POST);
         if(!$return['error']) header('Location:Read.php?show=publicacoes');
         break;
 
       case 'cat_produto':
-        unset($_POST['class']);
         include "classes/categorias.class.php";
         $return = (new catProduto)->add($_POST);
         if(!$return['error']) header('Location:Read.php?show=cat_produto');
         break;
 
       case 'cat_publicacao':
-        unset($_POST['class']);
         include "classes/categorias.class.php";
         $return = (new catPublicacao)->add($_POST);
         if(!$return['error']) header('Location:Read.php?show=cat_publicacao');
         break;
     }
-    header("Location:index.php?error=TRUE&msg=".$return['msg']);  
+    header("Location:index.php?error=TRUE&msg=".$return['msg']);
+    break;
+
+  case 'update':
+    switch ($_GET['class']) {
+      case 'usuarios':
+        var_dump($_POST);
+        break;
+
+      case 'produtos':
+        // code...
+        break;
+
+      case 'publicacoes':
+        // code...
+        break;
+
+      case 'cat_produto':
+        // code...
+        break;
+
+      case 'cat_publicacao':
+        // code...
+        break;
+
+      default:
+        header("Location:index.php?msg=switch_error");
+        break;
+    }
+
     break;
 
   case 'delete':
     include "classes/db.class.php";
     unset($_GET['action']);
-    $query = 'DELETE FROM '.$_GET['class'].' WHERE '.$_GET['column'].'='.$_GET['id'];
+    $query = 'DELETE FROM '.$_GET['tabela'].' WHERE '.$_GET['column'].'='.$_GET['id'];
     (new db)->runQuery($query);
-    header('Location:Delete.php?show='.$_GET['class']);
+    header('Location:Delete.php?show='.$_GET['tabela']);
     break;
 
   default:

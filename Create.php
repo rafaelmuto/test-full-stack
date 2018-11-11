@@ -17,55 +17,88 @@
 
     <div class="main_container">
 
-      <div class="form_usuario">
+      <div class="usuarios">
         <h2>Usuarios</h2>
-        <form action="switch.php?action=cadastro" method="post">
+        <form action="switch.php?action=cadastro&tabela=usuarios" method="post">
           Nome: <input type="text" name="nome" value="">
           E-mail: <input type="email" name="email" value="">
           Senha: <input type="password" name="senha" value="">
           Conf. Senha: <input type="password" name="conf_senha" value="">
-          <button class="button" type="submit" name="class" value="usuarios">Cadastrar!</button>
+          <button class="button" type="submit">Cadastrar!</button>
         </form>
       </div>
 
-      <div class="form_catProduto">
+      <div class="cat_produto">
         <h2>Categoria de Produtos</h2>
-        <form action="switch.php?action=cadastro" method="post">
+        <form action="switch.php?action=cadastro&tabela=cat_produto" method="post">
           Nova Categoria de Produto: <input type="text" name="cat_nome" value="">
-          <button class="button" type="submit" name="class" value="cat_produto">Cadastrar!</button>
+          <button class="button" type="submit">Cadastrar!</button>
         </form>
       </div>
 
-      <div class="form_catPublicacao">
+      <div class="cat_publicacao">
         <h2>Categoria de Publicacao</h2>
-        <form action="switch.php?action=cadastro" method="post">
+        <form action="switch.php?action=cadastro&tabela=cat_publicacao" method="post">
           Nova Categoria de Publicacao: <input type="text" name="cat_nome" value="">
-          <button class="button" type="submit" name="class" value="cat_publicacao">Cadastrar!</button>
+          <button class="button" type="submit">Cadastrar!</button>
         </form>
       </div>
 
-      <div class="form_produto">
-        <form action="switch.php?action=cadastro" method="post" enctype="multipart/form-data">
+      <div class="produtos">
+        <form action="switch.php?action=cadastro&tabela=produtos" method="post" enctype="multipart/form-data">
           <h2>Produto</h2>
-          fk_usuario_id: <input type="text" name="fk_usuario_id" value="">
+          Usuario:
+          <select class="select_longo" name="fk_usuario_id">
+            <?php
+              include "classes/usuario.class.php";
+              $usuarios = (new usuario)->listar();
+              foreach ($usuarios as $item) {
+                echo '<option value="'.$item['usuario_id'].'">'.$item['nome'].'</option>';
+              }
+            ?>
+          </select>
           Titulo: <input type="text" name="titulo" value="">
-          Imagem: <input type="file" name="imagem" value="">
+          Imagem: <input type="file" name="imagem" value="" accept="image/png, image/jpeg">
           Valor: <input type="text" name="valor" value="">
-          categoria: <input type="text" name="categoria" value="">
-          <button class="button" type="submit" name="class" value="produtos">Cadastrar!</button>
+          Categoria:
+          <select class="select_longo" name="categoria">
+            <?php
+              include "classes/categorias.class.php";
+              $options = (new catProduto)->listar();
+              foreach ($options as $item) {
+                echo '<option value="'.$item['cat_produto_id'].'">'.$item['cat_nome'].'</option>';
+              }
+             ?>
+          </select>
+          <button class="button" type="submit">Cadastrar!</button>
         </form>
       </div>
 
-      <div class="form_publicacao">
-        <form  action="switch.php?action=cadastro" method="post" enctype="multipart/form-data">
+      <div class="publicacoes">
+        <form  action="switch.php?action=cadastro&tabela=publicacoes" method="post" enctype="multipart/form-data">
           <h2>Publicacao</h2>
-          fk_usuario_id: <input type="text" name="fk_usuario_id" value="">
+          Usuario:
+          <select class="select_longo" name="fk_usuario_id">
+            <?php
+              foreach ($usuarios as $item) {
+                echo '<option value="'.$item['usuario_id'].'">'.$item['nome'].'</option>';
+              }
+            ?>
+          </select>
           Titulo: <input type="text" name="titulo" value="">
           Descricao: <input type="text" name="descricao" value="">
           Conteudo: <textarea name="conteudo" rows="8"></textarea>
-          Imagem: <input type="file" name="imagem" value="">
-          categoria: <input type="text" name="categoria" value="">
-          <button class="button" type="submit" name="class" value="publicacoes">Cadastrar!</button>
+          Imagem: <input type="file" name="imagem" value="" accept="image/png, image/jpeg">
+          Categoria:
+          <select class="select_longo" name="categoria">
+            <?php
+              $options = (new catPublicacao)->listar();
+              foreach ($options as $item) {
+                echo '<option value="'.$item['cat_publicacao_id'].'">'.$item['cat_nome'].'</option>';
+              }
+             ?>
+          </select>
+          <button class="button" type="submit">Cadastrar!</button>
         </form>
       </div>
 

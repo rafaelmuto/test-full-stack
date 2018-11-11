@@ -29,7 +29,8 @@ class Db{
   }
 
   public function runQuery($string){
-    $this->pdo->query($string);
+    return $this->pdo->query($string)->fetchall(PDO::FETCH_ASSOC);
   }
+
 }
 ?>

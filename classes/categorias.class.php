@@ -20,6 +20,13 @@ class catProduto extends db
     $query->execute($post);
     return ["error"=>FALSE, "msg"=>'categoria_cadastrada'];
   }
+
+  public function update($post){
+    $lista = $this->pdo->query('SELECT cat_nome FROM cat_produto')->fetchall(PDO::FETCH_COLUMN);
+    if(in_array($post['cat_nome'],$lista[0])) return ["error"=>TRUE, "msg"=>'cat_nome_ja_cadastrada'];
+    $query = $this->pdo->prepare('UPDATE cat_produto SET cat_nome=:cat_nome WHERE cat_produto_id=:cat_produto_id')->execute($post);
+    return ["error"=>FALSE, "msg"=>"update_ok"];
+  }
 }
 
 /**
@@ -40,6 +47,13 @@ class catPublicacao extends db
     $query = $this->pdo->prepare('INSERT INTO cat_publicacao(`cat_nome`) VALUES(:cat_nome)');
     $query->execute($post);
     return ["error"=>FALSE, "msg"=>'categoria_cadastrada'];
+  }
+
+  public function update($post){
+    $lista = $this->pdo->query('SELECT cat_nome FROM cat_publicacao')->fetchall(PDO::FETCH_COLUMN);
+    if(in_array($post['cat_nome'],$lista[0])) return ["error"=>TRUE, "msg"=>'cat_nome_ja_cadastrada'];
+    $query = $this->pdo->prepare('UPDATE cat_publicacao SET cat_nome=:cat_nome WHERE cat_publicacao_id=:cat_publicacao_id')->execute($post);
+    return ["error"=>FALSE, "msg"=>"update_ok"];
   }
 }
 

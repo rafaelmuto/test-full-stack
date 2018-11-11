@@ -35,5 +35,15 @@ class publicacao extends db
     $query->execute($post);
     return ["error"=>FALSE, "msg"=>'publicacao_cadastrada'];
   }
+
+  public function update($post){
+    $post['imagem'] = $this->getImage();
+    if(!$post['imagem']){
+      $query = 'SELECT imagem FROM publicacoes WHERE pub_id='.$post['pub_id'];
+      $post['imagem'] = $this->pdo->query($query)->fetchAll(PDO::FETCH_COLUMN)[0];
+    }
+    $query = $this->pdo->prepare('UPDATE publicacoes SET fk_usuario_id=:fk_usuario_id, titulo=:titulo, descricao=:descricao, conteudo=:conteudo, imagem=:imagem, categoria=:categoria, data=:data WHERE pub_id=:pub_id')->execute($post);
+    return ["error"=>FALSE, "msg"=>"update_ok"];
+  }
 }
  ?>

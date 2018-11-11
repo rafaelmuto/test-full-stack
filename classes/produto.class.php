@@ -35,6 +35,16 @@ class produto extends db
     $query->execute($post);
     return ["error"=>FALSE, "msg"=>'produto_cadastrado'];
   }
+
+  public function update($post){
+    $post['imagem'] = $this->getImage();
+    if(!$post['imagem']){
+      $query = 'SELECT imagem FROM produtos WHERE produto_id='.$post['produto_id'];
+      $post['imagem'] = $this->pdo->query($query)->fetchAll(PDO::FETCH_COLUMN)[0];
+    }
+    $query = $this->pdo->prepare('UPDATE produtos SET fk_usuario_id=:fk_usuario_id, titulo=:titulo, valor=:valor, categoria=:categoria, data=:data, imagem=:imagem WHERE produto_id=:produto_id')->execute($post);
+    return ["error"=>FALSE, "msg"=>"update_ok"];
+  }
 }
 
 

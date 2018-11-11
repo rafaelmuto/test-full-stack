@@ -25,7 +25,7 @@
       <a href="index.php">Voltar</a>
     </header>
 
-    <div class="inst">
+
     <?php
       if(isset($_GET['show']) && !isset($_GET['form'])){
         switch ($_GET['show']) {
@@ -57,7 +57,7 @@
       }
       else{
         if(!isset($_GET['form'])){
-          echo("<h2>escolha a tabela a ser mostrada</h2>");
+          echo("<div class='inst'><h2>escolha a tabela a ser mostrada</h2></div>");
         }
       }
      ?>
@@ -83,15 +83,85 @@
               }
 
             }
-            echo '<td><a href="Update.php?form=TRUE&class='.$_GET["show"].'&column='.array_keys($array[0])[0].'&id='.$item[array_keys($array[0])[0]].'">update</a></td>';
+            echo '<td><a href="Update.php?form=TRUE&tabela='.$_GET["show"].'&column='.array_keys($array[0])[0].'&id='.$item[array_keys($array[0])[0]].'">update</a></td>';
             echo "</tr>";
           }
         ?>
      </table>
      <? endif; ?>
      <? if(isset($_GET['form'])): ?>
-        <h1>AGUI VAI O FORM</h1>
+        <div class="inst">
+        <form action="switch.php?action=update&class=<?php echo $_GET['tabela'] ?>" method="post" enctype="multipart/form-data">
+        <?php
+          echo '<h2>'.$_GET['tabela'].'</h2>';
+          $query = 'SELECT * FROM '.$_GET['tabela'].' WHERE '.$_GET['column'].'='.$_GET['id'];
+          include "classes/db.class.php";
+          $return = (new db)->runQuery($query);
+          foreach ($return[0] as $key => $value) {
+            echo $key.': ';
+            switch ($key) {
+              case array_keys($return[0])[0]:
+                echo $value.'<br>';
+                echo '<input type="hidden" name="'.$key.'" value="'.$value.'">';
+                break;
+
+              case 'senha':
+                echo '<input type="password" name="'.$key.'" value="">';
+                echo 'confirmar senha: ';
+                echo '<input type="password" name="conf_'.$key.'" value="">';
+                break;
+
+              case 'fk_usuario_id':
+                echo '<select class="select_longo" name="fk_usuario_id">';
+                include "classes/usuario.class.php";
+                $usuarios = (new usuario)->listar();
+                foreach ($usuarios as $item) {
+                echo '<option value="'.$item['usuario_id'].'">'.$item['nome'].'</option>';
+                }
+                echo '</select>';
+                break;
+
+              case 'imagem':
+                echo '<br><a href="'.$value.'"><img class="thumb" src="'.$value.'"></a>';
+                echo '<input type="file" name="imagem" accept="image/png, image/jpeg">';
+                break;
+
+              case 'conteudo':
+                echo '<textarea name="conteudo" rows="8">'.$value.'</textarea>';
+                break;
+
+              case 'categoria':
+                if($_GET['tabela']=='produtos'){
+                  echo '<select class="select_longo" name="categoria">';
+                  include "classes/categorias.class.php";
+                  $options = (new catProduto)->listar();
+                  foreach ($options as $item) {
+                    echo '<option value="'.$item['cat_produto_id'].'">'.$item['cat_nome'].'</option>';
+                  }
+                  echo '</select>';
+                }
+                else{
+                  echo '<select class="select_longo" name="categoria">';
+                  include "classes/categorias.class.php";
+                  $options = (new catPublicacao)->listar();
+                  foreach ($options as $item) {
+                    echo '<option value="'.$item['cat_publicacao_id'].'">'.$item['cat_nome'].'</option>';
+                  }
+                  echo '</select>';
+                }
+                break;
+
+              default:
+                echo '<input type="text" name="'.$key.'" value="'.$value.'">';
+                break;
+            }
+          }
+          echo '<button type="submit">update</button>';
+        ?>
+        </form>
+        </div>
      <? endif; ?>
-   </div>
+
+
   </body>
 </html>

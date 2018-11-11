@@ -10,6 +10,7 @@ switch ($_GET['action']) {
         include "classes/usuario.class.php";
         $return = (new usuario)->add($_POST);
         if(!$return['error']) header('Location:Read.php?show=usuarios');
+        else header("Location:index.php?error=TRUE&msg=".$return['msg']);
         break;
 
       case 'produtos':
@@ -22,50 +23,66 @@ switch ($_GET['action']) {
         include "classes/publicacao.class.php";
         $return = (new publicacao)->add($_POST);
         if(!$return['error']) header('Location:Read.php?show=publicacoes');
+        else header("Location:index.php?error=TRUE&msg=".$return['msg']);
         break;
 
       case 'cat_produto':
         include "classes/categorias.class.php";
         $return = (new catProduto)->add($_POST);
         if(!$return['error']) header('Location:Read.php?show=cat_produto');
+        else header("Location:index.php?error=TRUE&msg=".$return['msg']);
         break;
 
       case 'cat_publicacao':
         include "classes/categorias.class.php";
         $return = (new catPublicacao)->add($_POST);
         if(!$return['error']) header('Location:Read.php?show=cat_publicacao');
+        else header("Location:index.php?error=TRUE&msg=".$return['msg']);
         break;
     }
-    header("Location:index.php?error=TRUE&msg=".$return['msg']);
     break;
 
   case 'update':
     switch ($_GET['class']) {
       case 'usuarios':
-        var_dump($_POST);
+        include "classes/usuario.class.php";
+        $return = (new usuario)->update($_POST);
+        if(!$return['error']) header("Location:Update.php?show=usuarios");
+        else header("Location:index.php?error=TRUE&msg=".$return['msg']);
         break;
 
       case 'produtos':
-        // code...
+        include "classes/produto.class.php";
+        $return = (new produto)->update($_POST);
+        if(!$return['error']) header("Location:Update.php?show=produtos");
+        else header("Location:index.php?error=TRUE&msg=".$return['msg']);
         break;
 
       case 'publicacoes':
-        // code...
+        include "classes/publicacao.class.php";
+        $return = (new publicacao)->update($_POST);
+        if(!$return['error']) header("Location:Update.php?show=publicacoes");
+        else header("Location:index.php?error=TRUE&msg=".$return['msg']);
         break;
 
       case 'cat_produto':
-        // code...
+        include "classes/categorias.class.php";
+        $return = (new catProduto)->update($_POST);
+        if(!$return['error']) header("Location:Update.php?show=cat_produto");
+        else header("Location:index.php?error=TRUE&msg=".$return['msg']);
         break;
 
       case 'cat_publicacao':
-        // code...
+        include "classes/categorias.class.php";
+        $return = (new catPublicacao)->update($_POST);
+        if(!$return['error']) header("Location:Update.php?show=cat_publicacao");
+        else header("Location:index.php?error=TRUE&msg=".$return['msg']);
         break;
 
       default:
         header("Location:index.php?msg=switch_error");
         break;
     }
-
     break;
 
   case 'delete':
